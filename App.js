@@ -1,6 +1,5 @@
 import { StyleSheet,Text, View, SafeAreaView, Button } from 'react-native';
 import React, { useState } from 'react';
-import { inline } from 'react-native-web/dist/cjs/exports/StyleSheet/compiler';
 
 export default function App() {
   const [count, setCount] = useState(0);
