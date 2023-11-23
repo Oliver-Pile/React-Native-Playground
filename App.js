@@ -1,14 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,Text, View, SafeAreaView, Button } from 'react-native';
+import React, { useState } from 'react';
 
 export default function App() {
+  const [count, setCount] = useState(0);
+
+  const increaseCount = () => {
+    setCount(count + 1);
+    };
+
+  
+    const resetCount = () => {
+      setCount(0);
+      };
+    
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text>{count}</Text>
+      <Button onPress={increaseCount} title="+1" />
+      <Button onPress={resetCount} title="Reset" />
+    </SafeAreaView>
   );
+
 }
+
 
 const styles = StyleSheet.create({
   container: {
