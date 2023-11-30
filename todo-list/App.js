@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './src/components/Header';
 import TodoTask from './src/components/todo_task';
+import AddTask from './src/components/addTask';
 import React, { useState } from 'react';
 
 export default function App() {
@@ -17,9 +18,20 @@ export default function App() {
       setTodos(todosNew);
     };
 
+    const addTask = (text) => {
+      setTodos((prevTodos) => {
+        return [{
+            key: Math.random().toString(),
+            task: text,
+            done: false
+          }, ...prevTodos]
+        });
+      }
+
   return (
     <View style={styles.container}>
       <Header/>
+      <AddTask addTask={addTask}/>
       <View style={styles.list}>
         <FlatList
           data={todos}
