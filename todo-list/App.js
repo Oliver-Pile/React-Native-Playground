@@ -9,6 +9,14 @@ export default function App() {
     { key: '2', task: 'Visit friends', done: true},
     { key: '3', task: 'Study', done: false}
     ]);
+
+    const toggleDone = (key) => {
+      const objIndex = todos.findIndex((obj => obj.key == key));
+      const todosNew = [...todos];
+      todosNew[objIndex]['done'] = !todosNew[objIndex]['done'];
+      setTodos(todosNew);
+    };
+
   return (
     <View style={styles.container}>
       <Header/>
@@ -16,7 +24,7 @@ export default function App() {
         <FlatList
           data={todos}
           renderItem={({item}) => (
-            <TodoTask item={item}/>
+            <TodoTask item={item} toggleDone={toggleDone}/>
           )}
         />
       </View>
